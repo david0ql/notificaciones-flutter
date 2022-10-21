@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 // ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
+import '../models/notificaciones.dart';
+
 enum ServerStatus { offline, online, connecting }
 
 class SocketService with ChangeNotifier {
+  static List<Sedes> notificaciones = [];
+
   ServerStatus _serverStatus = ServerStatus.connecting;
   ServerStatus get serverStatus => _serverStatus;
   late IO.Socket _socket;

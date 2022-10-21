@@ -4,6 +4,7 @@ import 'package:notificaciones/src/services/socket_service.dart';
 import 'package:notificaciones/src/widgets/custom_bottom_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_notify/quick_notify.dart';
+import 'package:socket_io_client/socket_io_client.dart';
 
 class Notificaciones extends StatefulWidget {
   const Notificaciones({super.key});
@@ -14,8 +15,6 @@ class Notificaciones extends StatefulWidget {
 
 class _NotificacionesState extends State<Notificaciones>
     with AutomaticKeepAliveClientMixin {
-  List<Sedes> notificaciones = [];
-
   @override
   void initState() {
     final socketService = Provider.of<SocketService>(context, listen: false);
@@ -25,7 +24,7 @@ class _NotificacionesState extends State<Notificaciones>
               (data as Map<dynamic, dynamic>),
               for (var element in data["notificaciones"])
                 {
-                  notificaciones.add(Sedes.fromMap(element)),
+                  SocketService.notificaciones.add(Sedes.fromMap(element)),
                   await QuickNotify.notify(
                     title: "Sede : ${Sedes.fromMap(element).sede}",
                     content: "Room : ${Sedes.fromMap(element).room}",
@@ -83,7 +82,7 @@ class _NotificacionesState extends State<Notificaciones>
         ],
       ),
       body: ListView.builder(
-        itemCount: notificaciones.length,
+        itemCount: SocketService.notificaciones.length,
         itemBuilder: (BuildContext context, int index) {
           return customListTile(index);
         },
@@ -102,7 +101,7 @@ class _NotificacionesState extends State<Notificaciones>
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             const Text("1900 Web"),
-            Text("Sede y Room: ${notificaciones[index].sede}"),
+            Text("Sede y Room: ${SocketService.notificaciones[index].sede}"),
           ]),
         ),
       ),

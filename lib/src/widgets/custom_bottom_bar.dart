@@ -15,7 +15,7 @@ class CustomBottomBar extends StatelessWidget {
         },
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.assistant_photo), label: 'Asistencia'),
+              icon: Icon(Icons.assistant_photo), label: 'Palabras'),
           BottomNavigationBarItem(
               icon: Icon(Icons.qr_code_scanner), label: 'QR'),
         ]);
