@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Jedi"
-#define MyAppVersion "Catarina"
-#define MyAppPublisher "Jennvid"
+#define MyAppVersion "Jennvid"
+#define MyAppPublisher "Oreo"
 #define MyAppURL "https://www.nordikhat.com"
 #define MyAppExeName "notificaciones.exe"
 
